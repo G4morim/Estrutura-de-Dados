@@ -12,7 +12,5 @@ public class Main {
         vetor.tamanho();
         System.out.println(vetor.contem(aluno1.getNota()));
 
-        
-
     }
 }
