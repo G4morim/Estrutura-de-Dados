@@ -1,23 +1,40 @@
 package exercicio2;
+
 public class VetorAluno {
 
-	private double [] notas = new double[5];
-    private int totalNotas = 0; //add objt aluno
-
-    public void adiciona(double nota){
-        this.notas[this.totalNotas] = nota;
-        this.totalNotas++;
+    private Aluno[] alunos;
+    private int totalAlunos;
+    
+    public VetorAluno(int capacidade) {
+        this.alunos = new Aluno[capacidade];
+        this.totalAlunos = 0;
     }
 
-    public void tamanho(){
-        System.out.println("Tamanho do vetor: " + this.notas.length);
+    public void adiciona(Aluno aluno) {
+        if (totalAlunos < alunos.length) {
+            this.alunos[totalAlunos] = aluno;
+            totalAlunos++;
+        } else {
+            System.out.println("Capacidade máxima atingida!");
+        }
     }
-    public boolean contem(double nota){
-        for(int i = 0; i < this.totalNotas; i++){
-            if(nota == this.notas[i]){
+
+    public int tamanho() {
+        return this.totalAlunos;
+    }
+
+    public boolean contem(Aluno aluno) {
+        for (int i = 0; i < totalAlunos; i++) {
+            if (alunos[i].equals(aluno)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public void listarAlunos() {
+        for (int i = 0; i < totalAlunos; i++) {
+            System.out.println(alunos[i]);
+        }
     }
 }

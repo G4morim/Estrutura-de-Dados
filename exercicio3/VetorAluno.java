@@ -1,7 +1,5 @@
 package exercicio3;
 
-import java.util.Arrays;
-
 public class VetorAluno implements Ivetor {
     private Aluno[] alunos = new Aluno[5];
     private int totalAlunos = 0;
@@ -55,12 +53,20 @@ public class VetorAluno implements Ivetor {
 
     private void garanteEspaco() {
         if (this.cheio()) {
-            this.alunos = Arrays.copyOf(this.alunos, this.alunos.length * 2);
+            Aluno[] novoAlunos = new Aluno[this.alunos.length * 2];
+            for (int i = 0; i < this.alunos.length; i++) {
+                novoAlunos[i] = this.alunos[i];
+            }
+            this.alunos = novoAlunos;
         }
     }
 
     public Aluno[] getAlunos() {
-        return Arrays.copyOf(alunos, totalAlunos);
+        Aluno[] alunosOcupados = new Aluno[totalAlunos];
+        for (int i = 0; i < totalAlunos; i++) {
+            alunosOcupados[i] = this.alunos[i];
+        }
+        return alunosOcupados;
     }
 
     public int capacidadeAtual() {
