@@ -1,9 +1,9 @@
 package exercicio3;
 
 public interface Ivetor {
-    public void adiciona(double elem);
+    public void adiciona(Aluno aluno);
     public int tamanho();
-    public boolean contem(double elem);
+    public boolean contem(Aluno aluno);
     public boolean cheio();
-    public boolean remover(double elem);
+    public boolean remover(Aluno aluno);
 }

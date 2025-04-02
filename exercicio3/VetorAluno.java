@@ -1,26 +1,27 @@
 package exercicio3;
 
-public class VetorAluno implements Ivetor {
+import java.util.Arrays;
 
-    private double[] notas = new double[5];
-    private int totalNotas = 0;
+public class VetorAluno implements Ivetor {
+    private Aluno[] alunos = new Aluno[5];
+    private int totalAlunos = 0;
 
     @Override
-    public void adiciona(double nota) {
+    public void adiciona(Aluno aluno) {
         this.garanteEspaco();
-        this.notas[this.totalNotas] = nota;
-        this.totalNotas++;
+        this.alunos[this.totalAlunos] = aluno;
+        this.totalAlunos++;
     }
 
     @Override
     public int tamanho() {
-        return this.notas.length;
+        return this.totalAlunos;
     }
 
     @Override
-    public boolean contem(double nota) {
-        for (int i = 0; i < this.totalNotas; i++) {
-            if (nota == this.notas[i]) {
+    public boolean contem(Aluno aluno) {
+        for (int i = 0; i < this.totalAlunos; i++) {
+            if (this.alunos[i].equals(aluno)) {
                 return true;
             }
         }
@@ -29,24 +30,24 @@ public class VetorAluno implements Ivetor {
 
     @Override
     public boolean cheio() {
-        return this.totalNotas == this.notas.length;
+        return this.totalAlunos == this.alunos.length;
     }
 
     @Override
-    public boolean remover(double nota) {
+    public boolean remover(Aluno aluno) {
         int indice = -1;
-        for (int i = 0; i < totalNotas; i++) {
-            if (this.notas[i] == nota) {
+        for (int i = 0; i < totalAlunos; i++) {
+            if (this.alunos[i].equals(aluno)) {
                 indice = i;
                 break;
             }
         }
 
         if (indice != -1) {
-            for (int i = indice; i < (totalNotas - 1); i++) {
-                this.notas[i] = this.notas[i + 1];
+            for (int i = indice; i < (totalAlunos - 1); i++) {
+                this.alunos[i] = this.alunos[i + 1];
             }
-            totalNotas--;
+            totalAlunos--;
             return true;
         }
         return false;
@@ -54,12 +55,15 @@ public class VetorAluno implements Ivetor {
 
     private void garanteEspaco() {
         if (this.cheio()) {
-            double[] novoVetor = new double[this.notas.length * 2];
-            for (int i = 0; i < this.notas.length; i++) {
-                novoVetor[i] = this.notas[i];
-            }
-            this.notas = novoVetor;
+            this.alunos = Arrays.copyOf(this.alunos, this.alunos.length * 2);
         }
     }
 
+    public Aluno[] getAlunos() {
+        return Arrays.copyOf(alunos, totalAlunos);
+    }
+
+    public int capacidadeAtual() {
+        return this.alunos.length;
+    }
 }

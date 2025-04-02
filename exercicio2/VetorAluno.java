@@ -2,7 +2,7 @@ package exercicio2;
 public class VetorAluno {
 
 	private double [] notas = new double[5];
-    private int totalNotas = 0;
+    private int totalNotas = 0; //add objt aluno
 
     public void adiciona(double nota){
         this.notas[this.totalNotas] = nota;

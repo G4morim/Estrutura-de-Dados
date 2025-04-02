@@ -26,12 +26,25 @@ public class Aluno {
     public void setIdade(int idade) {
         this.idade = idade;
     }
-
+    
     public double getNota() {
         return nota;
     }
-
+    
     public void setNota(double nota) {
         this.nota = nota;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Aluno aluno = (Aluno) obj;
+        return idade == aluno.idade && nome.equals(aluno.nome) && Double.compare(aluno.nota, nota) == 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" + "nome='" + nome + '\'' + ", idade=" + idade + ", nota=" + nota + '}';
     }
 }
