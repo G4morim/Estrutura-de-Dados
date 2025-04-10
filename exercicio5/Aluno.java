@@ -2,8 +2,8 @@ package exercicio5;
 
 class Aluno {
     String nome;
-    double nota;
-    int idade;
+    private double nota;
+    private int idade;
 
     public Aluno(String nome, double nota, int idade) {
         this.nome = nome;
